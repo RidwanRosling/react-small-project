@@ -34,7 +34,13 @@ export default function App() {
 
   return (
     <div className="conatiner">
-      <h1 style={{ display: "flex", justifyContent: "center" }}>
+      <h1
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "20px",
+        }}
+      >
         {arr[curIndex].name}
       </h1>
       <PhotoName
