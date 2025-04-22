@@ -1,7 +1,15 @@
+import { useState } from "react";
+
 export default function App() {
   return (
     <div>
-      <TextExpander expanded={false}>
+      <TextExpander
+        expanded={false}
+        collapsedNumWords={20}
+        expandButtonText="Show text"
+        collapseButtonText="Collapse text"
+        buttonColor="#ff6622"
+      >
         Space travel is the ultimate adventure! Imagine soaring past the stars
         and exploring new worlds. It's the stuff of dreams and science fiction,
         but believe it or not, space travel is a real thing. Humans and robots
@@ -22,7 +30,14 @@ export default function App() {
         foot on the moon or when rovers were sent to roam around on Mars.
       </TextExpander>
 
-      <TextExpander expanded={true} className="box">
+      <TextExpander
+        expanded={true}
+        className="box"
+        collapsedNumWords={20}
+        expandButtonText="Show text"
+        collapseButtonText="Collapse text"
+        buttonColor="#ff6622"
+      >
         Space missions have given us incredible insights into our universe and
         have inspired future generations to keep reaching for the stars. Space
         travel is a pretty cool thing to think about. Who knows what we'll
@@ -41,16 +56,22 @@ function TextExpander({
   className,
   children,
 }) {
-  const buttonText = expanded ? collapseButtonText : expandButtonText;
+  const [isEXpanded, setIsExpanded] = useState(expanded);
+  const buttonText = isEXpanded ? collapseButtonText : expandButtonText;
 
   return (
     <div className={className}>
       <span>
-        {buttonText
+        {isEXpanded
           ? children
           : children.split(" ").slice(0, collapsedNumWords).join(" ") + "..."}
       </span>
-      <button style={{ color: buttonColor }}>{buttonText}</button>
+      <button
+        onClick={() => setIsExpanded(!isEXpanded)}
+        style={{ color: buttonColor }}
+      >
+        {buttonText}
+      </button>
     </div>
   );
 }
