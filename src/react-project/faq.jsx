@@ -20,7 +20,7 @@ const faqList = [
   },
 ];
 
-export default function App() {
+export default function Faq() {
   const [state, setState] = useState(null);
 
   function handleState(id) {

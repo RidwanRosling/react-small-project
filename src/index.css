@@ -32,4 +32,5 @@ body {
   width: 50vw;
   height: 300px;
   object-fit: cover;
+  margin-bottom: 3em;
 }
